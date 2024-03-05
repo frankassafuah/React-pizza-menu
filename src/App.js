@@ -79,18 +79,26 @@ function Menu() {
       )} */}
       {/* ternary operator for conditional rendering */}
       {pizzaData.length > 0 ? (
-        <ul className="pizzas">
-          {pizzaData.map((pizza) => (
-            <Pizza pizza={pizza} key={pizza.name} />
-          ))}
-        </ul>
-      ) : null}
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious
+          </p>
+          <ul className="pizzas">
+            {pizzaData.map((pizza) => (
+              <Pizza pizza={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>We are still working on our menu.</p>
+      )}
     </main>
   );
 }
 
-function Pizza(props) {
-  const { name, photoName, ingredients, price } = props.pizza;
+function Pizza({ pizza }) {
+  const { name, photoName, ingredients, price } = pizza;
   return (
     <li className="pizza">
       <img src={photoName} alt={name} />
