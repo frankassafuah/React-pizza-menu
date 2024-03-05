@@ -1,5 +1,4 @@
-import logo from "./logo.svg";
-import "./App.css";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -48,19 +47,21 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
 
 function Header() {
+  // const style = { color: "red", fontSize: "40px", textTransform: "uppercase" };
+  const style = {};
   return (
-    <div>
-      <h1>Fast React Pizza Co.</h1>
-    </div>
+    <header className="header">
+      <h1 style={style}>Fast React Pizza Co.</h1>
+    </header>
   );
 }
 
@@ -68,20 +69,20 @@ function Pizza() {
   return (
     <div>
       <img src="pizzas/prosciutto.jpg" />
+      <h3>Pizza Spinaci</h3>
       <p>Tomato, mozarella, and pepperoni</p>
-      <h3>GHS 15</h3>
     </div>
   );
 }
 
 function Menu() {
   return (
-    <div>
-      <h1>Our menu</h1>
+    <main className="menu">
+      <h2>Our menu</h2>
       <Pizza></Pizza>
       <Pizza></Pizza>
       <Pizza></Pizza>
-    </div>
+    </main>
   );
 }
 
@@ -90,7 +91,9 @@ function Footer() {
   const openHour = 12;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
-  return <p>We are {isOpen ? "Open" : "Closed"}</p>;
+  return (
+    <footer className="footer">We are {isOpen ? "Open" : "Closed"}</footer>
+  );
 }
 
 export default App;
