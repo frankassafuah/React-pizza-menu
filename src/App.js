@@ -69,17 +69,22 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizza={pizza} key={pizza.name} />
-        ))}
-      </ul>
-      {/* <Pizza
-        name="Pizza Spinaci"
-        photoName="pizzas/prosciutto.jpg"
-        ingredients="Tomato, mozarella, and pepperoni"
-        price={10}
-      ></Pizza> */}
+      {/* short circuiting for conditional rendering */}
+      {/* {pizzaData.length > 0 && (
+        <ul className="pizzas">
+          {pizzaData.map((pizza) => (
+            <Pizza pizza={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      )} */}
+      {/* ternary operator for conditional rendering */}
+      {pizzaData.length > 0 ? (
+        <ul className="pizzas">
+          {pizzaData.map((pizza) => (
+            <Pizza pizza={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      ) : null}
     </main>
   );
 }
@@ -103,8 +108,26 @@ function Footer() {
   const openHour = 12;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
+  {
+    /* conditional rendering with mulitiple returns */
+  }
+  if (isOpen) {
+    return (
+      <footer className="footer">
+        <div>
+          <p>We are {isOpen ? "Open" : "Closed"}</p>
+          <button className="btn">Order</button>
+        </div>
+      </footer>
+    );
+  }
+
   return (
-    <footer className="footer">We are {isOpen ? "Open" : "Closed"}</footer>
+    <footer className="footer">
+      <div>
+        <p>We are {isOpen ? "Open" : "Closed"}</p>
+      </div>
+    </footer>
   );
 }
 
