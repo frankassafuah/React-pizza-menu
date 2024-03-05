@@ -65,24 +65,31 @@ function Header() {
   );
 }
 
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/prosciutto.jpg" />
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, and pepperoni</p>
-    </div>
-  );
-}
-
 function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <Pizza></Pizza>
-      <Pizza></Pizza>
-      <Pizza></Pizza>
+      <Pizza
+        name="Pizza Spinaci"
+        photoName="pizzas/prosciutto.jpg"
+        ingredients="Tomato, mozarella, and pepperoni"
+        price={10}
+      ></Pizza>
     </main>
+  );
+}
+
+function Pizza(props) {
+  const { name, photoName, ingredients, price } = props;
+  return (
+    <div className="pizza">
+      <img src={photoName} alt={name} />
+      <div>
+        <h3>{name}</h3>
+        <p>{ingredients}</p>
+        <span>{price + 3}</span>
+      </div>
+    </div>
   );
 }
 
